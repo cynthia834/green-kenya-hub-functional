@@ -68,6 +68,16 @@ const HeroSection = () => {
           />
         </div>
 
+        {/* Complete Waste Management Ecosystem Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Complete Waste Management Ecosystem
+          </h2>
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            From pickup scheduling to compost purchasing, we've got every aspect of sustainable waste management covered.
+          </p>
+        </div>
+
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="bg-black/20 backdrop-blur-sm rounded-lg p-6 text-white">
