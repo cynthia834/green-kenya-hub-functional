@@ -20,25 +20,28 @@ const TailoredSolutions = () => {
 
   const solutions = [
     {
-      title: "Residential Pickup",
-      description: "Perfect for households looking to compost kitchen scraps and organic waste.",
+      title: "For Households",
+      description: "Individual families and residents across Kenya",
       icon: "🏠",
-      features: ["Weekly pickup", "Organic waste only", "Compost delivery", "Mobile tracking"],
-      price: "From $25/month"
+      features: ["Curbside pickup", "Flexible scheduling", "Affordable rates"],
+      price: "Ksh. 200-400",
+      subtitle: "Starting from"
     },
     {
-      title: "Commercial Services",
-      description: "Comprehensive waste management for restaurants, cafes, and businesses.",
+      title: "For Businesses", 
+      description: "Restaurants and retail businesses",
       icon: "🏢",
-      features: ["Daily pickup", "All organic waste", "Bulk processing", "Sustainability reports"],
-      price: "From $150/month"
+      features: ["Bulk collection", "Food waste handling", "Business partnerships"],
+      price: "Ksh. 300-700",
+      subtitle: "Starting from"
     },
     {
-      title: "Community Programs",
-      description: "Large-scale composting solutions for neighborhoods and municipalities.",
-      icon: "🌍",
-      features: ["Community bins", "Educational programs", "Bulk composting", "Impact tracking"],
-      price: "Custom pricing"
+      title: "For Markets",
+      description: "Traditional and modern markets",
+      icon: "🛒",
+      features: ["Educational programs", "Organic waste focus", "Market-wide solutions"],
+      price: "Ksh. 3,000-8,000",
+      subtitle: "Starting from"
     }
   ];
 
@@ -50,7 +53,7 @@ const TailoredSolutions = () => {
             Tailored Solutions for Every Need
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the perfect composting solution that fits your lifestyle or business needs
+            Transparent pricing designed for different user categories across Kenya
           </p>
         </div>
 
@@ -73,8 +76,9 @@ const TailoredSolutions = () => {
                 </div>
                 
                 <div className="border-t pt-4">
-                  <div className="text-lg font-semibold text-primary mb-3">
-                    {solution.price}
+                  <div className="text-center mb-3">
+                    <div className="text-2xl font-bold text-primary">{solution.price}</div>
+                    <div className="text-sm text-muted-foreground">{solution.subtitle}</div>
                   </div>
                   <Button 
                     className="w-full"

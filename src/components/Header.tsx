@@ -70,10 +70,23 @@ const Header = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => toast({
+                title: "Login Required",
+                description: "Please connect Supabase for authentication functionality."
+              })}
+            >
               Login
             </Button>
-            <Button size="sm">
+            <Button 
+              size="sm"
+              onClick={() => toast({
+                title: "Sign Up Required",
+                description: "Please connect Supabase for authentication functionality."
+              })}
+            >
               Sign Up
             </Button>
           </div>
@@ -110,10 +123,23 @@ const Header = () => {
                 🛒 Marketplace
               </a>
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button variant="ghost" size="sm">
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => toast({
+                    title: "Login Required",
+                    description: "Please connect Supabase for authentication functionality."
+                  })}
+                >
                   Login
                 </Button>
-                <Button size="sm">
+                <Button 
+                  size="sm"
+                  onClick={() => toast({
+                    title: "Sign Up Required",
+                    description: "Please connect Supabase for authentication functionality."
+                  })}
+                >
                   Sign Up
                 </Button>
               </div>
