@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Leaf, Menu, X } from "lucide-react";
+import { Leaf, Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/components/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { toast } = useToast();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   const handlePickupClick = () => {
     toast({
@@ -21,7 +25,7 @@ const Header = () => {
 
   const handleReportClick = () => {
     toast({
-      title: "Reports Dashboard",
+      title: "Reports Dashboard", 
       description: "Opening reports section...",
     });
     // This will open a reports modal or navigate to reports page
@@ -29,6 +33,18 @@ const Header = () => {
     if (reportsModal) {
       reportsModal.style.display = 'block';
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast({
+      title: "Signed out",
+      description: "You have been successfully signed out.",
+    });
+  };
+
+  const handleAuthClick = () => {
+    navigate('/auth');
   };
 
   return (
@@ -70,25 +86,27 @@ const Header = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => toast({
-                title: "Login Required",
-                description: "Please connect Supabase for authentication functionality."
-              })}
-            >
-              Login
-            </Button>
-            <Button 
-              size="sm"
-              onClick={() => toast({
-                title: "Sign Up Required",
-                description: "Please connect Supabase for authentication functionality."
-              })}
-            >
-              Sign Up
-            </Button>
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <User className="h-4 w-4" />
+                  <span className="text-sm">{user.email}</span>
+                </div>
+                <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Button variant="ghost" size="sm" onClick={handleAuthClick}>
+                  Login
+                </Button>
+                <Button size="sm" onClick={handleAuthClick}>
+                  Sign Up
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -123,25 +141,27 @@ const Header = () => {
                 🛒 Marketplace
               </a>
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={() => toast({
-                    title: "Login Required",
-                    description: "Please connect Supabase for authentication functionality."
-                  })}
-                >
-                  Login
-                </Button>
-                <Button 
-                  size="sm"
-                  onClick={() => toast({
-                    title: "Sign Up Required",
-                    description: "Please connect Supabase for authentication functionality."
-                  })}
-                >
-                  Sign Up
-                </Button>
+                {user ? (
+                  <div className="space-y-2">
+                    <div className="flex items-center px-4 py-2">
+                      <User className="h-4 w-4 mr-2" />
+                      <span className="text-sm">{user.email}</span>
+                    </div>
+                    <Button variant="ghost" size="sm" className="w-full" onClick={handleSignOut}>
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <Button variant="ghost" size="sm" className="w-full" onClick={handleAuthClick}>
+                      Login
+                    </Button>
+                    <Button size="sm" className="w-full" onClick={handleAuthClick}>
+                      Sign Up
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
