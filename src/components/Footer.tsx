@@ -111,7 +111,7 @@ const Footer = () => {
                 Mombasa - Nakuru - Kisumu
               </div>
               <div>
-                <strong>Phone:</strong> +254 704 738 245<br />
+                <strong>Phone:</strong> +254 704 199 332<br />
                 <strong>Support:</strong> support@compostconnect.co.ke
               </div>
               <div>
