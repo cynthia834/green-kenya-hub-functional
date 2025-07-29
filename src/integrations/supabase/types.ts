@@ -16,27 +16,69 @@ export type Database = {
     Tables: {
       profiles: {
         Row: {
+          address: string | null
+          city: string | null
+          country: string | null
           created_at: string
           display_name: string | null
           email: string | null
+          first_name: string | null
           id: string
+          last_name: string | null
+          phone: string | null
+          role: string | null
           updated_at: string
           user_id: string
         }
         Insert: {
+          address?: string | null
+          city?: string | null
+          country?: string | null
           created_at?: string
           display_name?: string | null
           email?: string | null
+          first_name?: string | null
           id?: string
+          last_name?: string | null
+          phone?: string | null
+          role?: string | null
           updated_at?: string
           user_id: string
         }
         Update: {
+          address?: string | null
+          city?: string | null
+          country?: string | null
           created_at?: string
           display_name?: string | null
           email?: string | null
+          first_name?: string | null
           id?: string
+          last_name?: string | null
+          phone?: string | null
+          role?: string | null
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: string
           user_id?: string
         }
         Relationships: []
@@ -46,7 +88,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: { _user_id: string; _role: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never

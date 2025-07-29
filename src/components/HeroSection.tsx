@@ -20,24 +20,31 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/lovable-uploads/045ab4a7-3590-46a5-851e-f9b802e832d4.png')`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/lovable-uploads/5dbf62a4-1024-4ff3-a990-a16a8a5b069b.png')`
         }}
       />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-left max-w-2xl">
+        <div className="text-left max-w-3xl">
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            Welcome to
-          </h1>
-          <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-            CompostConnect
-          </h1>
+          <div className="mb-8">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-2 leading-tight">
+              Transform Waste
+            </h1>
+            <h1 className="text-5xl md:text-7xl font-bold text-primary mb-4 leading-tight">
+              Into Wealth
+            </h1>
+          </div>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-lg">
-            Buy high-quality compost manure directly from certified producers
-          </p>
+          <div className="mb-8">
+            <p className="text-xl md:text-2xl text-white/95 mb-4 font-medium">
+              Connect Communities Through Sustainable Composting
+            </p>
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl">
+              Join our platform to buy premium compost, schedule waste pickups, and contribute to a greener future for your community.
+            </p>
+          </div>
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-start gap-4 mb-16">

@@ -11,6 +11,12 @@ import { useToast } from '@/hooks/use-toast';
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
   const [loading, setLoading] = useState(false);
   const { signIn, signUp, user } = useAuth();
   const { toast } = useToast();
@@ -50,7 +56,15 @@ const Auth = () => {
     e.preventDefault();
     setLoading(true);
     
-    const { error } = await signUp(email, password);
+    const { error } = await signUp(email, password, {
+      first_name: firstName,
+      last_name: lastName,
+      phone,
+      address,
+      city,
+      country,
+      display_name: `${firstName} ${lastName}`.trim() || email
+    });
     
     if (error) {
       toast({
@@ -136,6 +150,30 @@ const Auth = () => {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSignUp} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="signup-firstname">First Name</Label>
+                      <Input
+                        id="signup-firstname"
+                        type="text"
+                        placeholder="John"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="signup-lastname">Last Name</Label>
+                      <Input
+                        id="signup-lastname"
+                        type="text"
+                        placeholder="Doe"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
                   <div className="space-y-2">
                     <Label htmlFor="signup-email">Email</Label>
                     <Input
@@ -146,6 +184,48 @@ const Auth = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-phone">Phone</Label>
+                    <Input
+                      id="signup-phone"
+                      type="tel"
+                      placeholder="+1 (555) 123-4567"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-address">Address</Label>
+                    <Input
+                      id="signup-address"
+                      type="text"
+                      placeholder="123 Main Street"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="signup-city">City</Label>
+                      <Input
+                        id="signup-city"
+                        type="text"
+                        placeholder="New York"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="signup-country">Country</Label>
+                      <Input
+                        id="signup-country"
+                        type="text"
+                        placeholder="United States"
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="signup-password">Password</Label>

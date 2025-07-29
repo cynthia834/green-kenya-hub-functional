@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Leaf, Menu, X, User, LogOut } from "lucide-react";
+import { Leaf, Menu, X, User, LogOut, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/components/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,6 +92,12 @@ const Header = () => {
                   <User className="h-4 w-4" />
                   <span className="text-sm">{user.email}</span>
                 </div>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link to="/admin">
+                    <Shield className="h-4 w-4 mr-2" />
+                    Admin
+                  </Link>
+                </Button>
                 <Button variant="ghost" size="sm" onClick={handleSignOut}>
                   <LogOut className="h-4 w-4 mr-2" />
                   Sign Out
@@ -147,6 +153,12 @@ const Header = () => {
                       <User className="h-4 w-4 mr-2" />
                       <span className="text-sm">{user.email}</span>
                     </div>
+                    <Button variant="ghost" size="sm" className="w-full" asChild>
+                      <Link to="/admin">
+                        <Shield className="h-4 w-4 mr-2" />
+                        Admin
+                      </Link>
+                    </Button>
                     <Button variant="ghost" size="sm" className="w-full" onClick={handleSignOut}>
                       <LogOut className="h-4 w-4 mr-2" />
                       Sign Out
